@@ -1,0 +1,123 @@
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.group {
+  display: grid;
+  align-content: start;
+  gap: 24px;
+  padding: clamp(22px, 3vw, 32px);
+  background: var(--bg-elev);
+}
+
+.groupHead {
+  display: grid;
+  gap: 6px;
+}
+
+.groupIndex {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+
+.groupName {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.groupDesc {
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.items {
+  display: grid;
+  gap: 10px;
+}
+
+.items li {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  align-items: baseline;
+  column-gap: 8px;
+  font-size: 14.5px;
+}
+
+.marker {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  transform: translateY(-1px);
+}
+
+.shipped {
+  color: var(--text);
+}
+
+.shipped .marker {
+  background: var(--accent);
+}
+
+.building {
+  color: var(--text-2);
+}
+
+.building .marker {
+  border: 1.5px solid var(--concept);
+}
+
+.note {
+  grid-column: 2;
+  font-size: 12.5px;
+  color: var(--text-3);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+.summary {
+  gap: 12px;
+  background: var(--bg);
+}
+
+.summary p:last-child {
+  font-size: 14.5px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.shippedText {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.buildingText {
+  color: var(--concept);
+  font-weight: 500;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

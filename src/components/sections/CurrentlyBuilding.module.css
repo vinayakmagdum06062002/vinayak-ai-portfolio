@@ -1,0 +1,497 @@
+.section {
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 40% at 15% 0%, rgba(231, 183, 102, 0.07), transparent 70%),
+    radial-gradient(50% 35% at 100% 40%, rgba(231, 183, 102, 0.035), transparent 70%);
+}
+
+.head {
+  display: grid;
+  gap: 18px;
+  max-width: 820px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+}
+
+.subtitle {
+  font-size: clamp(17px, 1.8vw, 20px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+.disclaimer {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border: 1px solid var(--concept-line);
+  border-radius: var(--radius);
+  background: var(--concept-soft);
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+
+.disclaimerIcon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--concept);
+  color: var(--concept);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  margin-top: 1px;
+}
+
+/* ---- Diagram card ------------------------------------------------------- */
+.diagramCard {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--surface), var(--bg-elev));
+  overflow: hidden;
+}
+
+.diagramBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.segmented button {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  color: var(--text-2);
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.segmented button[aria-selected="true"] {
+  background: var(--surface-3);
+  color: var(--text);
+}
+
+.targetTag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--concept);
+  padding-right: 8px;
+}
+
+.diagramBody {
+  padding: clamp(18px, 3vw, 32px);
+}
+
+/* ---- System diagram ----------------------------------------------------- */
+.system {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 28px;
+  align-items: start;
+}
+
+.tiers {
+  display: grid;
+  gap: 18px;
+}
+
+.tier {
+  position: relative;
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.tier:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(120px + 16px + 24px);
+  bottom: -18px;
+  width: 1px;
+  height: 18px;
+  background: linear-gradient(var(--concept-line), transparent);
+}
+
+.tierName {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.tierNodes {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+.node {
+  display: grid;
+  gap: 3px;
+  width: 100%;
+  height: 100%;
+  padding: 12px 14px;
+  text-align: left;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.015);
+  transition:
+    border-color 0.2s var(--ease),
+    background-color 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.node:hover {
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.node[aria-pressed="true"] {
+  border-color: var(--concept);
+  background: var(--concept-soft);
+}
+
+.nodeLabel {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.nodeDetail {
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.4;
+}
+
+.inspector {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.inspectorTitle {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.inspectorBody {
+  font-size: 14.5px;
+  color: var(--text-2);
+}
+
+.inspectorPath {
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--text-3);
+}
+
+.pathActive {
+  color: var(--concept);
+}
+
+/* ---- Agent flow --------------------------------------------------------- */
+.agent {
+  display: grid;
+  gap: 24px;
+}
+
+.agentControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+}
+
+.playButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--concept-line);
+  background: var(--concept-soft);
+  color: var(--concept);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.playButton span {
+  font-size: 10px;
+}
+
+.agentGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.agentSteps {
+  position: relative;
+  display: grid;
+}
+
+.agentSteps::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 18px;
+  bottom: 18px;
+  width: 1px;
+  background: var(--border-strong);
+}
+
+.agentStep {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 8px;
+  text-align: left;
+  color: var(--text-3);
+  transition:
+    color 0.25s var(--ease),
+    background-color 0.25s var(--ease);
+}
+
+.agentStep:hover {
+  color: var(--text-2);
+}
+
+.agentDot {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  background: var(--surface);
+  transition: all 0.25s var(--ease);
+}
+
+.agentLabel {
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+.done {
+  color: var(--text-2);
+}
+
+.done .agentDot {
+  border-color: var(--concept);
+  background: var(--concept);
+}
+
+.current {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.current .agentDot {
+  border-color: var(--concept);
+  background: var(--concept);
+  box-shadow: 0 0 0 5px rgba(231, 183, 102, 0.18);
+}
+
+.human .agentLabel::after {
+  content: "human";
+  margin-left: 10px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  vertical-align: 2px;
+}
+
+.agentDetail {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  display: grid;
+  gap: 14px;
+  min-height: 200px;
+  align-content: start;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.agentText {
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+.agentCallout {
+  padding: 10px 12px;
+  border-left: 2px solid var(--concept);
+  font-size: 13.5px;
+  color: var(--text-2);
+  background: var(--concept-soft);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ---- Lower grid --------------------------------------------------------- */
+.lower {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.capabilities,
+.principles {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+}
+
+.capabilities ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 28px;
+}
+
+.capabilities h3 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.capabilities p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+
+.principles ol {
+  display: grid;
+  gap: 14px;
+}
+
+.principles li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.principles li span {
+  font-size: 12px;
+  color: var(--concept);
+  padding-top: 2px;
+}
+
+@media (max-width: 1020px) {
+  .system {
+    grid-template-columns: 1fr;
+  }
+
+  .inspector {
+    position: static;
+  }
+
+  .lower {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .tier {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .tier:not(:last-child)::after {
+    left: 24px;
+  }
+
+  .tierNodes {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .agentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .agentDetail {
+    position: static;
+    min-height: 0;
+  }
+
+  .capabilities ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .tierNodes {
+    grid-template-columns: 1fr;
+  }
+
+  .segmented button {
+    padding: 0 10px;
+    font-size: 12.5px;
+  }
+}

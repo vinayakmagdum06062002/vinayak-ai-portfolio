@@ -1,0 +1,217 @@
+.wrap {
+  display: grid;
+  gap: 14px;
+}
+
+.naive {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 16px 22px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.naiveFlow {
+  display: inline-flex;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: var(--text-3);
+  text-decoration: line-through;
+  text-decoration-color: rgba(240, 138, 126, 0.6);
+}
+
+.naiveVerdict {
+  margin-left: auto;
+  font-size: 13.5px;
+  color: var(--text-3);
+}
+
+.production {
+  display: grid;
+  gap: 24px;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--surface), var(--bg-elev));
+}
+
+.prodHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.traceButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.traceButton span {
+  font-size: 10px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px 0;
+}
+
+.stepItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  width: calc(100% - 14px);
+  min-height: 78px;
+  padding: 12px 12px;
+  text-align: left;
+  align-content: start;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition:
+    border-color 0.25s var(--ease),
+    background-color 0.25s var(--ease);
+}
+
+.step:hover {
+  border-color: var(--border-strong);
+}
+
+.stepNum {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.stepName {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text-2);
+}
+
+.passed {
+  border-color: var(--accent-line);
+}
+
+.passed .stepName {
+  color: var(--text);
+}
+
+.passed .stepNum {
+  color: var(--accent);
+}
+
+.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 4px rgba(110, 214, 184, 0.08);
+}
+
+.active .stepName {
+  color: var(--text);
+}
+
+.active .stepNum {
+  color: var(--accent);
+}
+
+.connector {
+  width: 14px;
+  height: 1px;
+  background: var(--border-strong);
+  transition: background-color 0.3s var(--ease);
+}
+
+.connectorLit {
+  background: var(--accent);
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.detailName {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.detailName span {
+  font-size: 12px;
+}
+
+.detailName h3 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.detailCol {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.detailCol p:last-child {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+@media (max-width: 1020px) {
+  .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .detail {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .detailName {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .step {
+    min-height: 0;
+  }
+
+  .detail {
+    grid-template-columns: 1fr;
+  }
+
+  .naiveVerdict {
+    margin-left: 0;
+  }
+}
